@@ -1,0 +1,76 @@
+﻿<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>%(DocumentTitle)</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+    <style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+    </style>
+    %(HeadContent)
+  </head>
+
+  <body>
+    <div>
+      <h1>Example.com</h1>
+    </div>
+    <div id="swagger-ui"></div>
+
+    <!-- Workaround for https://github.com/swagger-api/swagger-editor/issues/1371 -->
+    <script>
+      if (window.navigator.userAgent.indexOf("Edge") > -1) {
+        console.log("Removing native Edge fetch in favor of swagger-ui's polyfill")
+        window.fetch = undefined;
+      }
+    </script>
+
+    <script src="./swagger-ui-bundle.js"> </script>
+    <script src="./swagger-ui-standalone-preset.js"> </script>
+    <script>
+    window.onload = function() {
+      var configObject = JSON.parse('%(ConfigObject)');
+      var oauthConfigObject = JSON.parse('%(OAuthConfigObject)');
+
+      // Apply mandatory parameters
+      configObject.dom_id = "#swagger-ui";
+      configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
+      configObject.layout = "StandaloneLayout";
+
+      // If oauth2RedirectUrl isn't specified, use the built-in default
+      if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
+        configObject.oauth2RedirectUrl = (new URL("oauth2-redirect.html", window.location.href)).href;
+
+      // Begin Swagger UI call region
+
+      const ui = SwaggerUIBundle(configObject);
+
+      ui.initOAuth(oauthConfigObject);
+
+      // End Swagger UI call region
+
+      window.ui = ui
+    }
+  </script>
+  </body>
+</html>
