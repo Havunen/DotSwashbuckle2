@@ -4,7 +4,7 @@ using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Running;
 
-namespace DotSwashbuckle.AspNetCore.Cli.Benchmark;
+namespace DotSwashbuckle.AspNetCore.Benchmark;
 
 public class Program
 {

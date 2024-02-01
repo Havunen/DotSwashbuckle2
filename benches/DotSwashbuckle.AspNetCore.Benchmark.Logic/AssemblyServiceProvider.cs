@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore;
 using System.Reflection;
 using Microsoft.Extensions.Hosting;
+using DotSwashbuckle.AspNetCore.Cli;
 
-namespace DotSwashbuckle.AspNetCore.Cli.Benchmark
+namespace DotSwashbuckle.AspNetCore.Benchmark.Logic
 {
-    internal class AssemblyServiceProvider
+    public class AssemblyServiceProvider
     {
         public static IServiceProvider GetServiceProvider(Assembly startupAssembly)
         {

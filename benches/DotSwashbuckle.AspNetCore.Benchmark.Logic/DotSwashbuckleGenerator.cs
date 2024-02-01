@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Writers;
 using System.Globalization;
 
-namespace DotSwashbuckle.AspNetCore.Cli.Benchmark
+namespace DotSwashbuckle.AspNetCore.Benchmark.Logic
 {
-    internal class DotSwashbuckleGenerator
+    public class DotSwashbuckleGenerator
     {
 
         public static string CreateSwaggerDoc(IServiceProvider serviceProvider, bool isYaml, bool isV2)
@@ -18,7 +18,7 @@ namespace DotSwashbuckle.AspNetCore.Cli.Benchmark
                 null
             );
 
-            using (var streamWriter = (new StringWriter(CultureInfo.InvariantCulture)))
+            using (var streamWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 IOpenApiWriter writer;
                 if (isYaml)

@@ -1,15 +1,8 @@
 ﻿using BenchmarkDotNet.Attributes;
-using DotSwashbuckle.AspNetCore.Swagger;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Writers;
-using System.Globalization;
-using System.Reflection;
-using Microsoft.Extensions.Hosting;
+using DotSwashbuckle.AspNetCore.Benchmark.Logic;
 using System.Runtime.Loader;
 
-namespace DotSwashbuckle.AspNetCore.Cli.Benchmark
+namespace DotSwashbuckle.AspNetCore.Benchmark
 {
     public class OpenApiGenerateJsonBenchmark
     {
