@@ -1,8 +1,0 @@
-{
-  "name": "dotswashbuckle",
-  "version": "1.0.2",
-  "private": true,
-  "dependencies": {
-    "redoc": "2.0.0"
-  }
-}
